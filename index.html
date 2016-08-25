@@ -10,19 +10,27 @@
     <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js"></script>
     <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js"></script>
     <script>
+
+    var contacts = [
+      {key: 1, name: "Vas Kort", email: "vaskort@gmail.com" },
+      {key: 2, name: "Vas"}
+    ]
+
+    var listElements = contacts
+      .filter(function(contact){
+        return contact.email;
+      })
+      .map(function(contact){
+        return React.createElement('li', {key: contact.key},
+          React.createElement('h2', {}, contact.name),
+          React.createElement('a', {href: 'mailto:'+contact.email}, contact.email)
+        )
+      })
+
       var rootElement =
         React.createElement('div', {},
           React.createElement('h1', {}, 'Contacts'),
-          React.createElement('ul', {},
-            React.createElement('li', {},
-              React.createElement('h2', {}, 'Vasilis Kortsimelidis'),
-              React.createElement('a', {href: 'mailto:vaskort@gmail.com'}, 'vaskort@gmail.com')
-            ),
-            React.createElement('li', {},
-              React.createElement('h2', {}, 'Vasilis Kortsimelidis'),
-              React.createElement('a', {href: 'mailto:vaskort@gmail.com'}, 'vaskort@gmail.com')
-            )
-          )
+          React.createElement('ul', {}, listElements)
         )
 
         ReactDOM.render(rootElement, document.getElementById('react-app'))
