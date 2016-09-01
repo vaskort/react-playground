@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>I'm in a React app!</title>
-  </head>
-  <body>
-    <div id="react-app"></div>
+<head>
+  <meta charset="UTF-8" />
+  <title>I'm in a React app!</title>
+</head>
+<body>
+  <div id="react-app"></div>
 
-    <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js"></script>
-    <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js"></script>
-    <script>
+  <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js"></script>
+  <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js"></script>
+  <script>
 
-    var contacts = [
-      {key: 1, name: "Vas Kort", email: "vaskort@gmail.com" },
-      {key: 2, name: "Vas"}
-    ]
+  var contacts = [
+    {key: 1, name: "James K Nelson", email: "james@jamesknelson.com", description: "Front-end Unicorn"},
+    {key: 2, name: "Jim", email: "jim@example.com"},
+    {key: 3, name: "Joe"},
+  ]
 
-    var listElements = contacts
-      .filter(function(contact){
-        return contact.email;
-      })
-      .map(function(contact){
-        return React.createElement('li', {key: contact.key},
-          React.createElement('h2', {}, contact.name),
-          React.createElement('a', {href: 'mailto:'+contact.email}, contact.email)
+  var ContactItem = React.createClass({
+    propTypes: {
+      name: React.PropTypes.string.isRequired,
+      email: React.PropTypes.string.isRequired,
+      description: React.PropTypes.string,
+    },
+
+    render: function() {
+      return (
+        React.createElement('li', {className: 'Contact'},
+          React.createElement('h2', {className: 'Contact-name'}, this.props.name),
+          React.createElement('h3', {className: 'Contact-email'}, this.props.email)
         )
-      })
+      )
+    }
+  })
 
-      var rootElement =
-        React.createElement('div', {},
-          React.createElement('h1', {}, 'Contacts'),
-          React.createElement('ul', {}, listElements)
-        )
 
-        ReactDOM.render(rootElement, document.getElementById('react-app'))
-    </script>
-  </body>
+  var element = contacts
+    .filter(function(contact) { return contact.email })
+    .map(function(contact) { React.createElement(ContactItem, contact) })
+
+  var rootElement =
+    React.createElement('div', {},
+      React.createElement('h1', {}, "Contacts"),
+      React.createElement('ul', {}, element)
+    )
+
+  ReactDOM.render(rootElement, document.getElementById('react-app'))
+  </script>
+</body>
 </html>
