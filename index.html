@@ -28,7 +28,7 @@
       return (
         React.createElement('li', {className: 'Contact'},
           React.createElement('h2', {className: 'Contact-name'}, this.props.name),
-          React.createElement('h3', {className: 'Contact-email'}, this.props.email)
+          React.createElement('a', {href:'mailto:'+this.props.emails, className: 'Contact-email'}, this.props.email)
         )
       )
     }
@@ -37,7 +37,7 @@
 
   var element = contacts
     .filter(function(contact) { return contact.email })
-    .map(function(contact) { React.createElement(ContactItem, contact) })
+    .map(function(contact) { return React.createElement(ContactItem, contact) })
 
   var rootElement =
     React.createElement('div', {},
