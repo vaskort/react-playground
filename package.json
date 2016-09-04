@@ -19,5 +19,10 @@
   "dependencies": {
     "react": "^15.3.0",
     "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-bower-install": "^1.6.0",
+    "grunt-wiredep": "^3.0.1"
   }
 }
