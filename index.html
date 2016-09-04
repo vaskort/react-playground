@@ -46,14 +46,15 @@
       return (
         React.createElement('form', {className: 'formWrapper'},
           React.createElement('div', {className: 'inputWrapper'},
-            React.createElement('input', {placeholder: 'Name (Required)', className: 'input', type: 'text'}, this.props.contact.name)
+            React.createElement('input', {placeholder: 'Name (Required)', className: 'input', type: 'text', value: this.props.contact.name })
           ),
           React.createElement('div', {className: 'inputWrapper'},
-            React.createElement('input', {placeholder: 'Email (Required)', className: 'input', type: 'email'}, this.props.contact.email)
+            React.createElement('input', {placeholder: 'Email (Required)', className: 'input', type: 'email', value: this.props.contact.email })
           ),
           React.createElement('div', {className: 'textAreaWrapper'},
             React.createElement('textarea', {placeholder: 'Description', value: this.props.contact.description})
-          )
+          ),
+          React.createElement('button', {className: 'addContactButton'}, 'Add Contact bro')
         )
       )
     }
