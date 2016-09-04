@@ -28,7 +28,8 @@
       return (
         React.createElement('li', {className: 'Contact'},
           React.createElement('h2', {className: 'Contact-name'}, this.props.name),
-          React.createElement('a', {href:'mailto:'+this.props.emails, className: 'Contact-email'}, this.props.email)
+          React.createElement('a', {href:'mailto:'+this.props.emails, className: 'Contact-email'}, this.props.email),
+          React.createElement('h3', {})
         )
       )
     }
