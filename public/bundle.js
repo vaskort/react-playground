@@ -24972,11 +24972,15 @@
 	    return React.createElement(
 	      "div",
 	      null,
-	      React.createElement("input", { type: "text", placeholder: "Enter City name" }),
 	      React.createElement(
-	        "button",
+	        "form",
 	        null,
-	        "Get Weather"
+	        React.createElement("input", { type: "text", placeholder: "Enter City name" }),
+	        React.createElement(
+	          "button",
+	          null,
+	          "Get Weather"
+	        )
 	      )
 	    );
 	  }
